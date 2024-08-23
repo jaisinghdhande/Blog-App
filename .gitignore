@@ -1,0 +1,39 @@
+# Ignore node_modules folders in both client and server
+client/node_modules/
+server/node_modules/
+
+# Ignore build output folders
+client/build/
+server/dist/
+
+# Ignore environment files (if any)
+client/.env
+server/.env
+
+# Ignore log files
+client/npm-debug.log*
+server/npm-debug.log*
+*.log
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Ignore any temporary or backup files
+*.tmp
+*.bak
+*.swp
+
+# Ignore coverage reports
+client/coverage/
+server/coverage/
+
+# Ignore yarn error logs
+yarn-error.log
