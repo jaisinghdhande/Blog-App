@@ -1,0 +1,23 @@
+nav {
+  background-color: black;
+  color: white;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-options a {
+  margin: auto 10px;
+  background-color: white;
+  padding: 10px 24px;
+  color: black;
+  border-radius: 20px;
+  font-weight: 600;
+}

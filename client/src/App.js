@@ -8,18 +8,21 @@ import { UserContextProvider } from "./Provider/UserContext";
 import CreatePost from "./components/CreatePost/CreatePost";
 import PostPage from "./components/PostPage/PostPage";
 import EditPost from "./components/EditPost/EditPost";
+import ProtectedRoutes from "./components/ProtectedRoutes/protectedRoutes";
 
 function App() {
   return (
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Layout></Layout>}>
-          <Route index element={<IndexPage></IndexPage>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
-          <Route path="/post" element={<CreatePost></CreatePost>}></Route>
-          <Route path="/post/:id" element={<PostPage></PostPage>}></Route>
-          <Route path="/edit/:id" element={<EditPost></EditPost>}></Route>
+          <Route element={<ProtectedRoutes></ProtectedRoutes>}>
+            <Route index element={<IndexPage></IndexPage>}></Route>
+            <Route path="/post" element={<CreatePost></CreatePost>}></Route>
+            <Route path="/post/:id" element={<PostPage></PostPage>}></Route>
+            <Route path="/edit/:id" element={<EditPost></EditPost>}></Route>
+          </Route>
         </Route>
       </Routes>
     </UserContextProvider>
