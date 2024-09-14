@@ -1,8 +1,20 @@
 const fs = require("fs");
 const BlogModel = require("../model/blog");
 
+/*
+$regex: This MongoDB operator allows you to search for patterns in text. 
+In this case, it's searching for the substring "node" in the content field.
+$options: 'i': This makes the search case-insensitive, meaning it will match "Node", "NODE", and "node" equally.
+*/
+
 module.exports.getBlog = async (req, res) => {
-  const post = await BlogModel.find()
+  let query = {};
+
+  if (req.query.search) {
+    query.content = { $regex: req.query.search, $options: "i" };
+  }
+
+  const post = await BlogModel.find(query)
     .populate("author", ["username"])
     .sort({ createdAt: -1 });
   res.status(200).send(post);
@@ -20,7 +32,6 @@ module.exports.createBlog = async (req, res) => {
   console.log("createblog");
   const { originalname, path } = req.file;
   const { title, summary, content } = req.body;
-  const { token } = req.cookies;
 
   console.log(req.file);
   const parts = originalname.split(".");
